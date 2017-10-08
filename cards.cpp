@@ -1,13 +1,9 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
-
-/*
- You might or might not need these two extra libraries
- #include <iomanip>
- #include <algorithm>
- */
-
+#include <iomanip>
+#include <algorithm>
+#include <vector>
 
 /* *************************************************
  Card class
@@ -44,6 +40,8 @@ Card::Card(){
         default: break;
     }
 }
+
+Card::Card(const Card& c): suit(c.suit), rank(c.rank) {}
 
 // Accessor: returns a string with the suit of the card in Spanish
 string Card::get_spanish_suit() const {
@@ -110,13 +108,63 @@ string Card::get_spanish_rank() const {
 // Accessor: returns a string with the suit of the card in English
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
-    return "";
+    string suitName;
+    switch (suit) {
+        case OROS:
+            suitName = "golds";
+            break;
+        case COPAS:
+            suitName = "cups";
+            break;
+        case ESPADAS:
+            suitName = "swords";
+            break;
+        case BASTOS:
+            suitName = "clubs";
+            break;
+        default: break;
+    }
+    return suitName;
 }
 
 // Accessor: returns a string with the rank of the card in English
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
-    return "";
+    string rankName;
+    switch (rank) {
+        case AS:
+            rankName = "Ace";
+            break;
+        case DOS:
+            rankName = "Two";
+            break;
+        case TRES:
+            rankName = "Three";
+            break;
+        case CUATRO:
+            rankName = "Four";
+            break;
+        case CINCO:
+            rankName = "Five";
+            break;
+        case SEIS:
+            rankName = "Six";
+            break;
+        case SIETE:
+            rankName = "Seven";
+            break;
+        case SOTA:
+            rankName = "Jack";
+            break;
+        case CABALLO:
+            rankName = "Knight";
+            break;
+        case REY:
+            rankName = "King";
+            break;
+        default: break;
+    }
+    return rankName;
 }
 
 
@@ -125,6 +173,14 @@ string Card::get_english_rank() const {
 // AS=1, DOS=2, ..., SIETE=7, SOTA=10, CABALLO=11, REY=12
 int Card::get_rank() const {
     return static_cast<int>(rank) + 1 ;
+}
+
+//Returns the card value
+//AS=1, DOS=2, ..., SIETE=7, SOTA=0.5, CABALLO=0.5, REY=0.5
+double Card::get_value() const {
+    int r = get_rank();
+    //if rank is less than or equal to 7, value = rank; else, value = 0.5
+    return static_cast<double>((r <= 7) ? r: 0.5);
 }
 
 // Comparison operator for cards
@@ -139,6 +195,18 @@ bool Card::operator < (Card card2) const {
  Hand class
  ************************************************* */
 // Implemente the member functions of the Hand class here.
+Hand::Hand(){}
+
+//functions:
+//Keeps track of total value of hand
+int Hand::score(){
+    return 0;
+}
+
+//Adds a card to the hand
+void Hand::add_card(Card c){
+    cards.push_back(c);
+}
 
 
 
@@ -146,4 +214,9 @@ bool Card::operator < (Card card2) const {
  Player class
  ************************************************* */
 // Implemente the member functions of the Player class here.
+Player::Player(int m): money(m) {
+    if(money == 900) {
+        dealer = true;
+    }
+}
 

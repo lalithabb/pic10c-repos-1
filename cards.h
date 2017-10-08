@@ -30,6 +30,8 @@ class Card {
 public:
     // Constructor assigns random rank & suit to card.
     Card();
+    //Copy constructor
+    Card(const Card& c);
     
     // Accessors
     string get_spanish_suit() const;
@@ -47,6 +49,10 @@ public:
     // The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
     int get_rank() const;
     
+    //Converts card rank to value
+    //The possible returns are, 1, 2, 3, 4, 5, 6, 7, and 0.5
+    double get_value() const;
+    
     // Compare rank of two cards. E.g: Eight<Jack is true.
     // Assume Ace is always 1.
     // Useful if you want to sort the cards.
@@ -63,10 +69,14 @@ public:
     // A vector of Cards
     Hand();
     
-    // You decide what functions you'll need...
+    //functions:
+    //Keeps track of total value of hand
+    int score();
+    //Adds a card to the hand
+    void add_card(Card c);
     
 private:
-    // You decide what fields you'll need...
+    vector<Card> cards;
 };
 
 
@@ -77,10 +87,14 @@ public:
     Player(int m);
     
     // You decide what functions you'll need...
+    //determines which of the two players is the dealer
+    bool is_dealer() const;
     
 private:
-    int money;
     // You decide what extra fields (if any) you'll need...
+    int money;
+    bool dealer;
+    Hand hand;
 };
 
 #endif
