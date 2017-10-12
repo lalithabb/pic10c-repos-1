@@ -35,7 +35,7 @@ int main(){
         while(true) {
             cin >> bet;
             if(bet <= player.get_money()) {
-                //adds card to hand
+                //adds card to hand 
                 player.play_hand(bet, newCard);
                 break;
             }
