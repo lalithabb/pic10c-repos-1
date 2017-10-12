@@ -217,28 +217,32 @@ void Hand::add_card(Card c){
  Player class
  ************************************************* */
 // Implemente the member functions of the Player class here.
-Player::Player(int m): money(m) {
+Player::Player(int m): money(m)
+{
     if(money == 900) {
         dealer = true;
     }
 }
 
-bool Player::is_dealer() const{
+bool Player::is_dealer() const
+{
     return dealer;
 }
 
-int Player::get_money() const{
+int Player::get_money() const
+{
     return money;
 }
 
-int Player::play_hand(int bet){
-    
-    if(bet > money) {
-        return -1;
-    }
-    else {
-        money -= bet;
-        return 0;
-    }
+void Player::play_hand(int bet, Card newCard)
+{
+    //subtracts bet amount from money remaining
+    money -= bet;
+    //adds card to hand
+    hand.add_card(newCard);
+}
+
+unsigned int Player::get_score(){
+    return hand.get_score();
 }
 
