@@ -41,8 +41,6 @@ Card::Card(){
     }
 }
 
-Card::Card(const Card& c): suit(c.suit), rank(c.rank) {}
-
 // Accessor: returns a string with the suit of the card in Spanish
 string Card::get_spanish_suit() const {
     string suitName;
