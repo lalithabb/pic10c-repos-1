@@ -71,7 +71,7 @@ public:
     
     //functions:
     //Keeps track of total value of hand
-    unsigned int score();
+    unsigned int get_score();
     //Adds a card to the hand
     void add_card(Card c);
     
@@ -89,6 +89,13 @@ public:
     // You decide what functions you'll need...
     //determines which of the two players is the dealer
     bool is_dealer() const;
+    
+    //returns amount of money left
+    int get_money() const;
+    
+    //play a hand
+    int play_hand(int bet);
+    
     
 private:
     // You decide what extra fields (if any) you'll need...
