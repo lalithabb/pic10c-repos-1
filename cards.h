@@ -71,7 +71,7 @@ public:
     
     //functions:
     //Keeps track of total value of hand
-    int score();
+    unsigned int score();
     //Adds a card to the hand
     void add_card(Card c);
     
