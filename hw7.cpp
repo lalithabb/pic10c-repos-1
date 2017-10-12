@@ -24,6 +24,8 @@ int main(){
     
     unsigned int bet = 0;
     int round = 0;
+    int playerStatus = 0;
+    int dealerStatus = 0;
     while(true){
         //increment round number
         round++;
@@ -34,6 +36,7 @@ int main(){
         Card newCard;
         while(true) {
             cin >> bet;
+            //make sure bet is less than total money
             if(bet <= player.get_money()) {
                 //adds card to hand
                 player.play_hand(bet, newCard);
@@ -44,14 +47,22 @@ int main(){
             }
         }
         
+        //display new drawn card to player
         cout << "Your cards:\n" << "\t" << newCard.get_spanish_rank() << " de " << newCard.get_spanish_suit() << "\t(" << newCard.get_english_rank() << " of " << newCard.get_english_suit() << ").\n";
         
+        if(player.get_score() > 7.5)
+        {
+            playerStatus = 1;
+            break;
+        }
+
         cout << "Your total is " << player.get_score() << ". Do you want another card (y/n)?";
         char ans;
         cin >> ans;
         if(ans == 'n'){
             break;
         }
+
     }
     return 0;
 }
