@@ -197,8 +197,13 @@ Hand::Hand(){}
 
 //functions:
 //Keeps track of total value of hand
-int Hand::score(){
-    return 0;
+unsigned int Hand::score(){
+    unsigned int handValue = 0;
+    for (vector<Card>::iterator it = cards.begin(); it != cards.end(); ++it)
+    {
+        handValue += it->get_value();
+    }
+    return handValue;
 }
 
 //Adds a card to the hand
