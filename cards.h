@@ -71,7 +71,7 @@ public:
     
     //functions:
     //Keeps track of total value of hand
-    unsigned int get_score();
+    double get_score();
     
     //Adds a card to the hand
     void add_card(Card c);
@@ -98,7 +98,7 @@ public:
     void play_hand(int bet, Card newCard);
     
     //exposes the score of the hand
-    unsigned int get_score();
+    double get_score();
     
     
 private:

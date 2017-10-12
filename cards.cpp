@@ -197,7 +197,7 @@ Hand::Hand(){}
 
 //functions:
 //Keeps track of total value of hand
-unsigned int Hand::get_score(){
+double Hand::get_score(){
     unsigned int handValue = 0;
     for (vector<Card>::iterator it = cards.begin(); it != cards.end(); ++it)
     {
@@ -242,7 +242,7 @@ void Player::play_hand(int bet, Card newCard)
     hand.add_card(newCard);
 }
 
-unsigned int Player::get_score(){
+double Player::get_score(){
     return hand.get_score();
 }
 
